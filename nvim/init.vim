@@ -17,6 +17,9 @@ set tabstop=4             " tabs appear as being 4 spaces
 set shiftwidth=4          " when shifting indent with > and <, use 4 spaces
 set colorcolumn=120       " display bar on 120th column
 
+" spell check conifig
+set spellfile=~/.config/nvim/spell/en.utf8.add
+
 " enable indents & synax highlight
 filetype plugin indent on
 syntax on
@@ -24,6 +27,7 @@ syntax on
 " use smyck colour scheme
 colorscheme smyck
 highlight ColorColumn guibg=#353535
+highlight SpellBad cterm=underline guibg=#C75646
 
 " load plugins
 call plug#begin('~/.config/nvim/plug')
@@ -47,8 +51,11 @@ call plug#begin('~/.config/nvim/plug')
 call plug#end()
 
 " language client config
+" go:        https://github.com/golang/tools/tree/master/gopls
+" terraform: https://github.com/juliosueiras/terraform-lsp
 let g:LanguageClient_serverCommands = {
-    \ 'go': ['gopls']
+    \ 'go': ['gopls'],
+	\ 'tf': ['terraform-lsp']
 \ }
 
 " format code before save

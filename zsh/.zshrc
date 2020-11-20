@@ -9,8 +9,6 @@ export PATH=$PATH:$GOPATH/bin
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 
-# Direnv
-eval "$(direnv hook zsh)"
 
 # Git aliases
 alias gca='git add -A && git commit --amend --no-edit'
@@ -19,11 +17,47 @@ alias gs='git status --short'
 alias gl='git log'
 alias gcn='git add -A && git commit -am'
 alias gc='git checkout'
+alias gb='git branch'
 alias grc='git add -A && git rebase --continue'
 alias grom='git fetch -a && git rebase origin/master'
+
+# Kubectl aliases
+function kns { export KUBECTL_NAMESPACE="$1" }
+alias k='kubectl "--context=${KUBECTL_CONTEXT:-$(kubectl config current-context)}" ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'
+alias kg='k get'
+alias kd='k describe'
+alias kgp='k get pod'
+alias kdp='k describe pod'
+alias kgd='k get deployment'
+alias kdd='k describe deployment'
+alias kgs='k get service'
+alias kds='k describe service'
+alias kgn='k get node'
+alias kdn='k describe node'
+alias kabb='k apply -f https://k8s.io/examples/admin/dns/busybox.yaml'
+alias kebb='k exec -it busybox --'
+alias kdbb='k delete po busybox'
+alias kb='kustomize build --enable_alpha_plugins'
+alias kastdin='k apply -f -'
+
+# Istioctl aliases
+alias i='istioctl ${ISTIOCTL_NAMESPACE/[[:alnum:]-]*/--istioNamespace=${ISTIO_NAMESPACE}} ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'
+
+# Terraform aliases
+alias t='terraform'
+alias ti='t init'
+alias tp='t plan'
+alias ta='t apply'
+alias to='t output'
+alias td='t destroy'
 
 # Direnv hook
 eval "$(direnv hook zsh)"
 
 # FZF hook
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Pyenv hooks
+export PATH="${HOME}/.pyenv/bin:${PATH}"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
