@@ -55,7 +55,8 @@ call plug#end()
 " terraform: https://github.com/juliosueiras/terraform-lsp
 let g:LanguageClient_serverCommands = {
     \ 'go': ['gopls'],
-	\ 'tf': ['terraform-lsp']
+	\ 'tf': ['terraform-lsp'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
 \ }
 
 " format code before save

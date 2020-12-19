@@ -4,11 +4,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Env
-export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
 export EDITOR=nvim
 export VISUAL="$EDITOR"
-
+export TERM="xterm-256color"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 # Git aliases
 alias gca='git add -A && git commit --amend --no-edit'
@@ -40,9 +39,6 @@ alias kdbb='k delete po busybox'
 alias kb='kustomize build --enable_alpha_plugins'
 alias kastdin='k apply -f -'
 
-# Istioctl aliases
-alias i='istioctl ${ISTIOCTL_NAMESPACE/[[:alnum:]-]*/--istioNamespace=${ISTIO_NAMESPACE}} ${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=${KUBECTL_NAMESPACE}}'
-
 # Terraform aliases
 alias t='terraform'
 alias ti='t init'
@@ -56,8 +52,3 @@ eval "$(direnv hook zsh)"
 
 # FZF hook
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Pyenv hooks
-export PATH="${HOME}/.pyenv/bin:${PATH}"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
