@@ -7,6 +7,7 @@ fi
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 export TERM="xterm-256color"
+export LANG="C.UTF-8"
 export PATH="$PATH:$HOME/.cargo/bin"
 
 # Git aliases
