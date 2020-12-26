@@ -9,6 +9,7 @@ apt -y install \
 	python3-pip \
 	ripgrep \
 	tmux \
+	unzip \
 	zsh
 
 # Install prezto.
