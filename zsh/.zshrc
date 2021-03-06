@@ -8,7 +8,7 @@ export EDITOR=nvim
 export VISUAL="$EDITOR"
 export TERM="xterm-256color"
 export LANG="C.UTF-8"
-export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.go/bin"
 
 # Git aliases
 alias gca='git add -A && git commit --amend --no-edit'
